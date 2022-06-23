@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="systrayKnowSystem">
+        <div t-if="widget.show_knowsystem_quick" class="dropdown">
+			<a class="" title="KnowSystem" href="#" role="button">
+                <i class="fa fa-superpowers" role="img" aria-label="KnowSystem"/>
+            </a>
+        </div>
+    </t>
+
+</templates>

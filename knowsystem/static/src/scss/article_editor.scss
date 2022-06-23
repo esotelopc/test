@@ -1,0 +1,231 @@
+// ===== Main =====
+$o-ks-def-color-1: #f5f5f5;
+$o-ks-def-color-2: #ffffff;
+$o-ks-def-color-3: #706482;
+$o-ks-def-color-4: #464646;
+$o-ks-def-color-5: darken($o-ks-def-color-3, 5%);
+$o-ks-def-color-6: #706482;
+$o-ks-def-color-7: #87a6b5;
+$o-ks-ligth-grey: #f5f5f5;
+
+$o-ks-def-font: -apple-system, "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$o-ks-code-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$o-ks-def-text-color: $o-ks-def-color-4;
+
+$o-ks-def-btn-bg: $o-ks-def-color-3;
+$o-ks-def-btn-text: $o-ks-def-color-2;
+
+@mixin bg-variant($parent, $color) {
+    #{$parent} {
+        background-color: $color !important;
+    }
+    a#{$parent},
+    button#{$parent} {
+        &:hover, &:focus {
+            background-color: darken($color, 10%) !important;
+        }
+    }
+}
+@mixin text-emphasis-variant($parent, $color) {
+    #{$parent} {
+        color: $color !important;
+    }
+    a#{$parent} {
+        &:hover, &:focus {
+            color: darken($color, 10%) !important;
+        }
+    }
+}
+@include bg-variant(".bg-o-color-2", $o-ks-def-color-6);
+@include text-emphasis-variant(".text-o-color-2", $o-ks-def-color-6);
+@include bg-variant(".bg-o-color-4", $o-ks-def-color-7);
+@include bg-variant(".bg-gray-lighter", $o-ks-def-color-1);
+
+$o-ks-def-b-radius: 2px;
+$o-ks-def-b-radius-big: 10px;
+$o-ks-def-body-width: 1600px;
+$o-ks-def-body-bg: $o-ks-def-color-2;
+
+// ===== Layout =====
+.o_layout {
+    overflow: hidden;
+    box-sizing: content-box;
+    width: 94%;
+    min-height: 100%;
+    background-color: $o-ks-def-color-2;
+    padding: 0 0%;
+
+    &, p {font-size: 12px;}
+    &, p, h1, h2, h3, h4, h5, h6 {font-family: $o-ks-def-font;}
+
+    > .knowsystem_wrapper {
+        width: 100%;
+        margin: 0 auto;
+        .knowsystem_wrapper_td {
+            width: $o-ks-def-body-width;
+            border: 1px solid darken($o-ks-ligth-grey, 2%);
+        }
+    }
+}
+
+// ===== General snippets styles =====
+p, span, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: inherit;
+    font-family: $o-ks-def-font; 
+}
+ol, ul {
+  padding-left: 40px;
+}
+
+.knowsystem_snippet_general {
+    word-wrap: break-word !important; 
+    word-break: break-word !important;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    div.container {
+
+        padding: 0;
+    }
+    div.container > div.row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    a:not(.btn), .btn.btn-link {
+        font-weight: bold;
+        text-decoration: none !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        border: none!important;
+
+        &:hover, &:focus, &:active {
+            text-decoration: none !important;
+        }
+    }
+
+    .fa {
+        @mixin size($width, $height: $width) {
+          width: $width;
+          height: $height;
+        }
+
+        $size: 2rem;
+
+        &.rounded-circle,
+        &.rounded,
+        &.rounded-0,
+        &.rounded-leaf,
+        &.img-thumbnail,
+        &.shadow {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            // fa-1x is not ouput
+            @include size($size);
+            line-height: $size;
+            @for $i from 2 through 5 {
+                &.fa-#{$i}x {
+                    @include size($size + $i);
+                    line-height: $size + $i;
+                }
+            }
+        }
+    }
+    .media_iframe_video {
+        height: auto;
+        max-width: 100%;
+    }
+}
+
+.card {  
+    border-color: #d2d2d2;
+    .card-header,.card-footer {
+        background-color: inherit !important;
+    }
+    .card-body {
+        background-color: white !important;
+    }
+}
+.list-group .list-group-item {
+    border-color: #d2d2d2;
+
+}
+
+.knowsystem_no_margin {
+    margin: 0;
+}
+.knowsystem_table_styles {
+    width: 100%;
+    border-collapse:separate;
+}
+
+// ===== Particular snippets styles =====
+.knowsystem_code {
+    font-family: $o-ks-code-font;
+    color: $o-ks-def-color-2;
+    padding-left: 16px;
+}
+.knowsystem_alert {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: .25rem;
+    p, ul, ol {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &_sm {
+        padding: 10px;
+        font-size: 14px;
+    }
+    &_md {
+        padding: 15px;
+        font-size: 16px;
+    }
+    &_lg {
+        padding: 30px;
+        font-size: 18px;
+    }
+    &_icon {
+        float: left;
+
+    }
+    &_content {
+        overflow: hidden;
+    }
+}
+.knowsystem_hr {
+    line-height: 0;
+    hr {
+        padding: 0;
+        border: 0;
+        border-top: 1px solid $o-ks-def-color-4;
+        margin: 0;
+        color: inherit;
+    }
+}
+.knowsystem_text_highlight {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+.knowsystem_media_col {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
+
+
+// =====  Misc ===== 
+div.col:not([align]) {
+    text-align: inherit;
+}
+div.col[class*="mb"], div.col[class*="mt"] {
+    margin: 0 !important;
+}
+div.knowsystem-justify-right {
+    justify-content: flex-end !important;
+}
+body.o_in_iframe {
+    overflow: auto !important;
+}

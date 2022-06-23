@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+     <record id="article_update_form_view" model="ir.ui.view">
+        <field name="name">article.update.form.view</field>
+        <field name="model">article.update</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="articles" invisible="1"/>
+                    <field name="section_id"/>
+                    <field name="to_add_tag_ids"
+                           widget="many2many_tags"
+                           options="{'color_field': 'color'}"
+                    />
+                    <field name="to_remove_tag_ids"
+                           widget="many2many_tags"
+                           options="{'color_field': 'color'}"
+                    />
+                    <field name="activate"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

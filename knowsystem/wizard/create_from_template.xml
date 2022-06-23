@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+     <record id="create_from_template_form_view" model="ir.ui.view">
+        <field name="name">create.from.template.form.view</field>
+        <field name="model">create.from.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="template_id"/>
+                </group>
+                <footer>
+                    <button name="action_create_from_template"
+                            string="Create"
+                            type="object"
+                            class="oe_highlight"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="create_from_template_action" model="ir.actions.act_window">
+        <field name="name">create.from.template.action</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.from.template</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

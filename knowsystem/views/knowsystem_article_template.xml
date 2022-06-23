@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="knowsystem_article_template_view_search" model="ir.ui.view">
+        <field name="name">knowsystem.article.template.search</field>
+        <field name="model">knowsystem.article.template</field>
+        <field name="arch" type="xml">
+            <search>
+               <field name="name"/>
+               <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+            </search>
+        </field>
+    </record>
+    <record id="knowsystem_article_template_view_form" model="ir.ui.view">
+        <field name="name">knowsystem.article.template.form</field>
+        <field name="model">knowsystem.article.template</field>
+        <field name="arch" type="xml">
+            <form class="o_knowsystem_form" js_class="knowsystem_form_template">
+                <div class="oe_title">
+                    <h1>
+                        <field name="name"
+                               placeholder="Reference"
+                               class="oe_inline"
+                        />
+                    </h1>
+                </div>
+                <div class="knowsystem_fullwidth">
+                    <field name="description_arch"
+                           widget="knowsystem_html_editor"
+                           options="{
+                                'snippets': 'knowsystem.knowsystem_snippets',
+                                'cssEdit': 'knowsystem.knowsystem_iframe_css_assets_edit',
+                                'inline-field': 'description',
+                                'cssReadonly': 'knowsystem.knowsystem_iframe_css_assets_edit',
+                                'wrapper': 'knowsystem.knowsystem_wrappper',
+                                'noVideos': false,
+                           }" 
+                           class="oe_edit_only"
+                    />
+                    <field name="description"
+                           widget="not_editable_html"
+                           class="oe_read_only" 
+                           options="{'cssReadonly': 'knowsystem.knowsystem_iframe_css_assets_edit', 'notEditable': True}"
+                    />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="knowsystem_article_template_view_tree" model="ir.ui.view">
+        <field name="name">knowsystem.article.template.tree</field>
+        <field name="model">knowsystem.article.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name='name'/>
+            </tree>
+        </field>
+    </record>
+    <record id="knowsystem_article_template_action" model="ir.actions.act_window">
+        <field name="name">Templates</field>
+        <field name="res_model">knowsystem.article.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" eval="knowsystem_article_template_view_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click 'Create' to add a new article template</p>
+        </field>
+    </record>
+    <record id="knowsystem_article_template_action_only_form" model="ir.actions.act_window">
+        <field name="name">Template</field>
+        <field name="res_model">knowsystem.article.template</field>
+        <field name="view_mode">form</field>
+    </record>
+
+</odoo>

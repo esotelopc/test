@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="knowsystem_iframe_css_assets_edit" groups="base.group_user">
+        <t t-call-assets="knowsystem.assets_editor" t-js="false"/>
+        <t t-call="knowsystem.knowsystem_style"/>
+        <t t-call-assets="knowsystem.assets_editor_edition" t-js="false"/>
+        <t t-call-assets="web.assets_common" t-js="false"/>
+        <t t-call-assets="web.assets_frontend" t-js="false"/>
+        <t t-call-assets="web_editor.assets_wysiwyg" t-js="false"/>
+    </template>
+
+    <template id="knowsystem_style">
+        <style>
+            * {
+                box-sizing: border-box !important;
+            }
+            * h1, h2, h3, h4, h5, h6, p, td, th {
+                font-family: Arial, sans-serif !important;
+            }
+            html,
+            body {
+                margin: 0 auto !important;
+                padding: 0 !important;
+                height: 100% !important;
+                width: 100% !important;
+            }
+            * {
+                -ms-text-size-adjust: 100%;
+            }
+            table,
+            td {
+                mso-table-lspace: 0pt !important;
+                mso-table-rspace: 0pt !important;
+            }
+            img {
+                -ms-interpolation-mode:bicubic;
+            }
+            a {
+                text-decoration: none;
+            }
+            @media screen and (max-width: 768px) {
+                .knowsystem_table_styles {width: 100% !important;}
+            }
+        </style>
+    </template>
+</odoo>

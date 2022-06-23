@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    
+    <!-- Wrapper for article html (applied only for redaonly under the current implementation) -->
+    <t t-name="knowsystem.knowsystem_wrappper">
+        <div class="o_layout">
+            <div id="wrapper"/>
+        </div>
+    </t>
+    <!-- Quick Links for KnowSystem -->
+    <t t-inherit="web.ActionMenus" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_cp_action_menus')]" position="inside">
+            <div class="btn-group o_dropdown" t-if="knowsystemQuickSearch">
+                <button type="button"
+                        class="o_dropdown_toggler_btn btn btn-secondary"
+                        t-on-click="_onOpenKnowSystem"
+                >
+                    <i class="fa fa-superpowers"> </i>
+                    <span class="o_dropdown_title">KnowSystem</span>
+                </button>
+            </div>
+        </xpath>
+    </t>
+    <t t-name="ComposerQuickLink">
+        <div class="btn-group">
+            <button type="button"
+                    class="btn btn-secondary btn-sm open_knowsystem"
+                    title="Click to search for KnowSystem articles"
+            >
+                <i class="fa fa-superpowers"> KnowSystem</i>
+            </button>
+        </div>
+    </t>
+    <!-- KnowSystem Navigation -->
+    <t t-extend="KanbanView.buttons">
+        <t t-jquery="div" t-operation="append">
+            <button type="button"
+                    t-attf-class="btn btn-secondary form_knowsystem_create_from_template"
+                    t-if="widget and widget.modelName == 'knowsystem.article'"
+            >
+                <i class="fa fa-window-restore"></i> Create from template
+            </button>
+        </t>
+    </t>
+    <t t-name="KnowNavigationPanel">
+        <div class="knowsystem_navigation_panel know_navigation_panel hidden_mobile">
+            <div class="knowsystem_content">
+                <div class="knowsystem_panel_header">
+                    <div class="d-flex">
+                        <div>
+                            Sort by
+                        </div>
+                        <div class="knowselection_div">
+                            <select id="knowsort" class="knowselection_options">
+                                <option value="views_number_internal">Views</option>
+                                <option value="likes_score">Likes</option>
+                                <option value="name">Title</option>
+                                <option value="create_date">Created Date</option>
+                                <option value="write_revision_date">Write Date</option>
+                                <option value="section_id">Section</option>
+                                <option value="create_uid">Author</option>
+                            </select>
+                        </div>
+                        <div>
+                            <i class="fa fa-exchange know_functional_button knowreverse_sort knowclear"></i>
+                        </div>
+                    </div>
+                    <div  class="know_padding_top">
+                        <span class="know_functional_button knowselect_all">
+                            Select all found
+                        </span>
+                    </div>
+                </div>
+                <hr class="knowsystem_hr"/>
+                <div class="knowsystem_panel_header">
+                    <span>
+                        Sections <i class="fa fa-ban clear_sections know_functional_button knowclear"></i>
+                    </span>
+                </div>
+                <div class="knowsystem_panel_body">
+                    <div class="knowsystem_search_row">
+                        <div class="knowsystem_search_view">
+                            <i class="knowsystem_search_icon knowsystem_js_search_icon fa fa-search" id="knowsystem_section_search_btn"/>
+                            <i class="knowsystem_trash_icon knowsystem_js_search_icon fa fa-ban" id="knowsystem_section_search_clear"/>
+                            <div class="knowsystem_search_container">
+                                <input id="knowsystem_section_search" 
+                                       placeholder="search section"  
+                                       class="knowsystem_search_input"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sections" >
+                    </div>
+                </div>
+                <div t-if="right_for_create" class="knowsystem_panel_body mb24">
+                    <span class="add_knownode_button pull-right" id="add_know_section">...add new section</span>
+                </div>
+                <hr class="mb8 knowsystem_hr"/>
+                <div class="knowsystem_panel_header">
+                    <span>
+                        Tags <i class="fa fa-ban clear_tags know_functional_button knowclear"></i>
+                    </span>
+                </div>
+                <div class="knowsystem_search_row">
+                    <div class="knowsystem_search_view">
+                        <i class="knowsystem_search_icon knowsystem_js_search_icon fa fa-search" id="knowsystem_tag_search_btn"/>
+                        <i class="knowsystem_trash_icon knowsystem_js_search_icon fa fa-ban" id="knowsystem_tag_search_clear"/>
+                        <div class="knowsystem_search_container">
+                            <input id="knowsystem_tag_search" 
+                                   placeholder="search tag"  
+                                   class="knowsystem_search_input"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="knowsystem_panel_body">
+                    <div id="tags" >
+                    </div>
+                </div>
+                <div t-if="right_for_create" class="knowsystem_panel_body mb24">
+                    <span class="add_knownode_button pull-right" id="add_know_tag">...add new tag</span>
+                </div>
+                <div id="knowtours"/>
+            </div>
+        </div>
+    </t>
+    <t t-name="KnowSystemTours">
+        <t t-if="show_tour">
+            <hr class="mb8 knowsystem_hr"/>
+            <div class="knowsystem_panel_header">
+                <span>
+                    Tours
+                </span>
+            </div>
+            <div class="knowsystem_panel_body">
+                <ul class="know_tours">
+                    <t t-foreach="tours" t-as="tour">
+                        <li class="tour_li">
+                            <span class="add_knownode_button play_tour" t-att-id="tour.id">
+                                <t t-out="tour.name"/> <i class="fa fa-play knowclear"></i>
+                            </span>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+            <div t-if="right_for_delete" class="knowsystem_panel_body mb24">
+                <span class="add_knownode_button pull-right" id="add_new_tour">...add new tour</span>
+            </div>
+        </t>
+    </t>
+    <t t-name="KnowRightNavigationPanel">
+        <div class="knowsystem_right_navigation_panel know_navigation_panel hidden_mobile hidden_tablet">
+            <div class="knowsystem_content">
+                <div class="overall_articles_selection">
+                    <div class="knowsystem_panel_header">
+                        <span>
+                            Selected articles (<t t-out="count_art"/>)
+                            <i class="fa fa-ban clear_selected_articles know_functional_button knowclear"></i>
+                        </span>
+                    </div>
+                    <div class="knowsystem_panel_body_articles">
+                        <ul class="no_padding_knowul">
+                            <t t-foreach="articles" t-as="article">
+                                <!-- To-do: add d&d behaviour? -->
+                                <li>
+                                    <span class="knowsystem_article_selected_row know_functional_button"
+                                          t-att-id="article.id"
+                                          title="click to remove this article from selection"
+                                    >
+                                        <t t-out="article.name"/>
+                                    </span>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="mb8 knowsystem_hr"/>
+                <div class="knowsystem_panel_header">
+                    <div>
+                        <span class="selected_articles_favourite know_functional_button">
+                            <i class="fa fa-star"></i> Add to favourites
+                        </span>
+                    </div>
+                    <div t-if="right_for_create">
+                        <span class="selected_articles_update know_functional_button">
+                            <i class="fa fa-edit"></i> Mass update
+                        </span>
+                    </div>
+                    <div>
+                        <span class="selected_articles_follow know_functional_button">
+                            <i class="fa fa-bell"></i> Follow
+                        </span>
+                    </div>
+                    <div>
+                        <span class="selected_articles_unfollow know_functional_button">
+                            <i class="fa fa-bell-slash"></i> Unfollow
+                        </span>
+                    </div>
+                    <div t-if="right_for_create and knowsystem_website">
+                        <span class="selected_articles_publish know_functional_button">
+                            <i class="fa fa-globe"></i> Publish
+                        </span>
+                    </div>
+                    <div t-if="right_for_delete">
+                        <span class="selected_articles_add_to_tour know_functional_button">
+                            <i class="fa fa-map-signs"></i> Add to tour
+                        </span>
+                    </div>
+                    <div t-if="right_for_create">
+                        <span class="selected_articles_duplicate know_functional_button">
+                            <i class="fa fa-copy"></i> Duplicate
+                        </span>
+                    </div>
+                    <div>
+                        <span class="selected_articles_pdf know_functional_button">
+                            <i class="fa fa-print"></i> Save as PDF
+                        </span>
+                    </div>
+                    <div>
+                        <span class="selected_articles_export know_functional_button">
+                            <i class="fa fa-download"></i> Export
+                        </span>
+                    </div>
+                    <div t-if="right_for_create">
+                        <span class="selected_articles_archive know_functional_button">
+                            <i class="fa fa-archive"></i> Archive
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <!-- Article Form  -->
+    <t t-extend="FormView.buttons">
+        <t t-jquery="div.o_form_buttons_view" t-operation="append">
+            <span class="knowsystem_buttons">
+            </span>
+        </t>
+    </t>
+    <t t-name="KnowSystemFormButtons">
+        <t t-if="widget.modelName == 'knowsystem.article'">
+            <button t-if="widget.is_action_enabled('create')"
+                    type="button"
+                    class="btn btn-secondary form_knowsystem_create_from_template hidden_mobile"
+            >
+                <i class="fa fa-window-restore"></i> Create from template
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_chatter"
+            >
+                <i class="fa fa-comments"></i> Discuss
+            </button>
+            <button t-if="widget.is_action_enabled('edit')"
+                    type="button"
+                    class="btn btn-secondary form_knowsystem_article_revisions hidden_mobile"
+            >
+                <i class="fa fa-history"></i> Revisions
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_article_info hidden_mobile"
+            >
+                <i class="fa fa-info"></i> Info
+            </button>
+            <button t-if="widget.is_action_enabled('edit') and cdata.knowsystem_website"
+                    type="button"
+                    class="btn btn-secondary form_knowsystem_edit_website hidden_mobile hidden_tablet"
+            >
+                <i class="fa fa-external-link"></i>
+                <span t-if="cdata.website_editor">Edit</span> On Website
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_mark_favourite hidden_mobile"
+                    title="Add / remove from favourites"
+            >
+                <i id="knowfavorbutton" t-attf-class="fa fa-star#{((cdata.favourite) ? '' : '-o')}"></i>
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_article_like hidden_mobile"
+            >
+                <span id="knowlike" t-attf-class="#{((cdata.user_like) ? 'done_article_like' : '')}">
+                    <span id="knowlike_counter"><t t-out="cdata.likes_counter"></t></span>
+                    <i class="fa fa-thumbs-up"></i>
+                </span>
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_article_dislike hidden_mobile"
+            >
+                <span id="knowdislike" t-attf-class="#{((cdata.user_dislike) ? 'done_article_like' : '')}">
+                    <span id="knowdislike_counter"><t t-out="cdata.dislikes_counter"></t></span>
+                    <i class="fa fa-thumbs-down"></i>
+                </span>
+            </button>
+            <button type="button"
+                    class="btn btn-secondary form_knowsystem_print hidden_mobile"
+            >
+                <i class="fa fa-print"></i> Save as PDF
+            </button>
+            <div class="knowsystem_dropdown" t-if="widget.is_action_enabled('create')">
+                <button type="button"
+                        class="btn btn-secondary o_dropdown open_misc_actions"
+                >
+                    Actions <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="knowsystem_misc_actions knowsystem_hidden">
+                    <ul class="knowsystem_misc_action_ul">
+                        <li class="hidden_mobile">
+                            <button t-if="widget.is_action_enabled('edit')"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_restrict_access"
+                            >
+                                <i class="fa fa-group"></i> Restrict access
+                            </button>
+                        </li>
+                        <li class="hidden_mobile hidden_tablet">
+                            <button t-if="widget.is_action_enabled('edit') and cdata.knowsystem_website"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_article_publish"
+                            >
+                                <i class="fa fa-globe"></i>
+                                <span id="article_publish" t-attf-class="#{((cdata.website_published) ? 'knowsystem_hidden' : '')}">
+                                    Publish on website
+                                </span>
+                                <span id="article_unpublish" t-attf-class="#{((!cdata.website_published) ? 'knowsystem_hidden' : '')}">
+                                    Unpublish from website
+                                </span>
+                            </button>
+                        </li>
+                        <li class="hidden_mobile">
+                            <button t-if="widget.is_action_enabled('create')"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_make_template"
+                            >
+                                <i class="fa fa-plus"></i> Make template
+                            </button>
+                        </li>
+                        <li class="hidden_mobile">
+                            <button t-if="widget.is_action_enabled('delete') and cdata.learning_tour"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_add_to_tour"
+                            >
+                                <i class="fa fa-map-signs"></i> Add to tour
+                            </button>
+                        </li>
+                        <li>
+                            <button t-if="widget.is_action_enabled('create')"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_duplicate"
+                            >
+                                <i class="fa fa-copy"></i> Duplicate
+                            </button>
+                        </li>
+                        <li>
+                            <button t-if="widget.is_action_enabled('edit')"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_article_archive"
+                            >
+                                <i class="fa fa-archive"></i>
+                                <span id="article_archive" t-attf-class="#{((!cdata.active) ? 'knowsystem_hidden' : '')}">
+                                    Archive
+                                </span>
+                                <span id="article_restore" t-attf-class="#{((cdata.active) ? 'knowsystem_hidden' : '')}">
+                                    Restore
+                                </span>
+                            </button>
+                        </li>
+                        <li>
+                            <button t-if="widget.is_action_enabled('delete')"
+                                    type="button"
+                                    class="btn btn-secondary form_knowsystem_delete"
+                            >
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </t>
+    </t>
+    <!-- Revisions -->
+    <t t-name="KnowSystemRevisions">
+        <div class="knowmodal_div">
+            <table class="know_system_revisions table table-hover">
+                <thead class="hidden-xs">
+                  <tr>
+                      <th>Revision</th>
+                      <th>Title</th>
+                      <th>Contents</th>
+                      <th>Section</th>
+                      <th>Tags</th>
+                      <th>Files</th>
+                   </tr>
+                </thead>
+                <t t-foreach="revisions" t-as="revision">
+                    <tr class="know_system_revision">
+                        <td>
+                            <div>
+                                By <t t-out="revision.author_id"/> on <t t-out="revision.change_datetime"/>
+                            </div>
+                            <div>
+                                <button type="button"
+                                        class="btn btn-secondary open_revision"
+                                        t-att-data-id="revision.id"
+                                >
+                                    <i class="fa fa-long-arrow-right"></i> observe
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <t t-if="revision.name">
+                                <t t-out="revision.name"/>
+                            </t>
+                        </td>
+                        <td>
+                            <t t-if="revision.description">
+                                <span t-attf-class="#{((revision.description &gt; 0) ? 'green_revision' : 'red_revision')}">
+                                    <t t-out="revision.description"/>
+                                </span>
+                            </t>
+                        </td>
+                        <td>
+                            <t t-if="revision.section_id">
+                                <t t-out="revision.section_id"/>
+                            </t>
+                        </td>
+                        <td>
+                            <t t-if="revision.tag_ids">
+                                <t t-out="revision.tag_ids"/>
+                            </t>
+                        </td>
+                        <td>
+                            <t t-if="revision.attachment_ids">
+                                <t t-out="revision.attachment_ids"/>
+                            </t>
+                        </td>
+                    </tr>
+                </t>
+            </table>
+        </div>
+    </t>
+
+</templates>

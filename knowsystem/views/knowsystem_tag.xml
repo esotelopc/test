@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="knowsystem_tag_view_search" model="ir.ui.view">
+        <field name="name">knowsystem.tag.search</field>
+        <field name="model">knowsystem.tag</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Parent" name="group_parent" context="{'group_by':'parent_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="knowsystem_tag_view_form" model="ir.ui.view">
+        <field name="name">knowsystem.tag.form</field>
+        <field name="model">knowsystem.tag</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="Tag" class="oe_inline"/></h1>
+                    </div>
+                    <group>
+                        <field name="parent_id"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="Applied To">
+                            <group>
+                                <field name="apply_to_all"/>
+                            </group>
+                            <field name="filter_ids" attrs="{'invisible': [('apply_to_all', '=', True)]}">
+                                <tree>
+                                    <field name="model"/>
+                                    <field name="domain"/>
+                                </tree>
+                                <form>
+                                    <sheet>
+                                        <group>
+                                            <field name="model"/>
+                                        </group>
+                                        <label for="domain" attrs="{'invisible': [('model', '=', False)]}"/>
+                                        <field name="domain"
+                                               widget="domain"
+                                               options="{'model': 'model'}"
+                                               attrs="{'invisible': [('model', '=', False)]}"
+                                               style="min-height:200px !important;"
+                                        />
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="knowsystem_tag_view_tree" model="ir.ui.view">
+        <field name="name">knowsystem.tag.tree</field>
+        <field name="model">knowsystem.tag</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name='name'/>
+            </tree>
+        </field>
+    </record>
+    <record id="knowsystem_tag_action" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">knowsystem.tag</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" eval="knowsystem_tag_view_search"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">Click 'Create' to add tags to categorize knowledge articles</p>
+        </field>
+    </record>
+
+</odoo>

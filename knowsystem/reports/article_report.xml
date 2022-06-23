@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_report_knowsystem_article" model="ir.actions.report">
+        <field name="name">Articles</field>
+        <field name="model">knowsystem.article</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">knowsystem.report_article</field>
+        <field name="report_file">knowsystem.report_article</field>
+        <field name="print_report_name">object.action_get_published_name()</field>
+    </record>
+
+</odoo>

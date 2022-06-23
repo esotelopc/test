@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.knowsystem</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block"
+                     data-string="KnowSystem"
+                     string="KnowSystem"
+                     data-key="knowsystem"
+                     name="knowsystem"
+                >
+                    <h2>KnowSystem Options</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div name="tours_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="tours_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_tours_option"/>
+                            </div>
+                            <div name="tours_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_tours_option"/>
+                                <div name="tours_option_hint" class="text-muted">
+                                    Organize articles in tours and control users' progress
+                                </div>
+                            </div>
+                        </div>
+                        <div name="model_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="model_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_models_option"/>
+                            </div>
+                            <div name="mode_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_models_option"/>
+                                <div name="mode_option_hint" class="text-muted">
+                                    Turn on quick access to KnowSystem articles from documents
+                                </div>
+                            </div>
+                        </div>
+                        <div name="composer_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="composer_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_composer_option"/>
+                            </div>
+                            <div name="composer_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_composer_option"/>
+                                <div name="composer_option_hint" class="text-muted">
+                                    Select KnowSystem articles in email composers to add references in outgoing messages
+                                </div>
+                            </div>
+                        </div>
+                        <div name="knowsystem_systray_option_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="knowsystem_systray_option_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_systray_option"/>
+                            </div>
+                            <div name="knowsystem_systray_option_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_systray_option"/>
+                                <div name="knowsystem_systray_option_option_hint" class="text-muted">
+                                    Add an icon for quick articles search to the Odoo systray (near activities and 
+                                    messaging)
+                                </div>
+                            </div>
+                        </div>
+                        <div name="editor_option"
+                             class="col-xs-12 col-md-6 o_setting_box"
+                             attrs="{'invisible': [('module_knowsystem_website', '=', False)]}"
+                        >
+                            <div name="editor_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_website_editor"/>
+                            </div>
+                            <div name="editor_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_website_editor"/>
+                                <div name="editor_option_hint" class="text-muted">
+                                    Edit KnowSystem articles using Odoo website builder. Otherwise articles would be
+                                    available on your website in readonly mode
+                                </div>
+                            </div>
+                            <div name="editor_option_3" 
+                                 class="o_setting_left_pane"
+                                 attrs="{'invisible': [('knowsystem_website_editor', '=', False)]}"
+                            >
+                                <field name="knowsystem_turnoff_backend_editor"/>
+                            </div>
+                            <div name="editor_option_4" 
+                                 class="o_setting_right_pane"
+                                 attrs="{'invisible': [('knowsystem_website_editor', '=', False)]}"
+                            >
+                                <label for="knowsystem_turnoff_backend_editor"/>
+                                <div name="editor_option_hint" class="text-muted">
+                                    If checked, articles backend editor would be turned off and all articles content
+                                    would be shown in edit mode as raw HTML 
+                                </div>
+                            </div>
+                        </div>
+                        <div name="knowsystem_no_titles_printed_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="knowsystem_no_titles_printedn_option_1" class="o_setting_left_pane">
+                                <field name="knowsystem_no_titles_printed"/>
+                            </div>
+                            <div name="knowsystem_no_titles_printed_option_2" class="o_setting_right_pane">
+                                <label for="knowsystem_no_titles_printed"/>
+                                <div name="knowsystem_no_titles_printed_option_hint" class="text-muted">
+                                    Do not include titles of articles in their PDF version (print only their content)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>Extra Options</h2>
+                    <div class="row mt16 o_settings_container" id="knowsystem_extra_options">
+                        <div name="website_know_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_2" class="o_setting_left_pane">
+                                <field name="module_knowsystem_website"/>
+                            </div>
+                            <div name="extra_2" class="o_setting_right_pane">
+                                <label for="module_knowsystem_website"/>
+                                <div name="extra_2_hint" class="text-muted">
+                                    Turn on to publish articles for portal users and website visitors. The tool
+                                    <a href="https://apps.odoo.com/apps/modules/15.0/knowsystem_website/">
+                                        KnowSystem Website and Portal
+                                    </a> (40 Euros extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="docuumentation_builder_option"
+                             class="col-xs-12 col-md-6 o_setting_box"
+                             attrs="{'invisible': [('module_knowsystem_website', '=', False)]}"
+                        >
+                            <div name="docuumentation_builder_option_1" class="o_setting_left_pane">
+                                <field name="module_documentation_builder"/>
+                            </div>
+                            <div name="docuumentation_builder_option_2" class="o_setting_right_pane">
+                                <label for="module_documentation_builder"/>
+                                <div name="extra_3_hint" class="text-muted">
+                                    Turn on to build documentation based on KnowSystem articles. The tool
+                                    <a href='https://apps.odoo.com/apps/modules/15.0/documentation_builder/'>
+                                        Documentation Builder
+                                    </a> (99 Euros extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="website_custom_field_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_3" class="o_setting_left_pane">
+                                <field name="module_knowsystem_custom_fields"/>
+                            </div>
+                            <div name="extra_3" class="o_setting_right_pane">
+                                <label for="module_knowsystem_custom_fields"/>
+                                <div name="extra_3_hint" class="text-muted">
+                                    Turn on to prepare custom fields for articles. The tool
+                                    <a href='https://apps.odoo.com/apps/modules/15.0/knowsystem_custom_fields/'>
+                                        KnowSystem: Custom Fields
+                                    </a> (48 Euros extra) is required
+                                </div>
+                            </div>
+                        </div>
+                        <div name="website_custom_field_portal_option"
+                             class="col-xs-12 col-md-6 o_setting_box"
+                             attrs="{'invisible': ['|', ('module_knowsystem_website', '=', False), ('module_knowsystem_custom_fields', '=', False)]}"
+                        >
+                            <div name="extra_4" class="o_setting_left_pane">
+                                <field name="module_knowsystem_website_custom_fields"/>
+                            </div>
+                            <div name="extra_4" class="o_setting_right_pane">
+                                <label for="module_knowsystem_website_custom_fields"/>
+                                <div name="extra_3_hint" class="text-muted">
+                                    Turn on to show article custom fields for portal users and website visitors. The tool
+                                    <a href='https://apps.odoo.com/apps/modules/15.0/knowsystem_website_custom_fields/'>
+                                        Custom Fields for Website and Portal
+                                    </a> is required (free if KnowSystem Website and Portal and KnowSystem: Custom
+                                    Fields are installed)
+                                </div>
+                            </div>
+                        </div>
+                        <div name="multilang_know_option" class="col-xs-12 col-md-6 o_setting_box">
+                            <div name="extra_1" class="o_setting_left_pane">
+                                <field name="module_knowsystem_multilang"/>
+                            </div>
+                            <div name="extra_1" class="o_setting_right_pane">
+                                <label for="module_knowsystem_multilang"/>
+                                <div name="extra_1_hint" class="text-muted">
+                                    Turn on to translate articles, sections and tags to available in the databases
+                                    languages. The tool
+                                    <a href="https://apps.odoo.com/apps/modules/15.0/knowsystem_multilang/">
+                                        KnowSystem Multi Languages
+                                    </a> (10 Euros extra) is required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_config_settings_knowsystem_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'knowsystem'}</field>
+    </record>
+
+</odoo>

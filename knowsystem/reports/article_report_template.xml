@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_article_document">
+        <t t-call="web.external_layout">
+            <div class="page">
+                <div class="oe_structure"/>
+                <h1 t-if="printed_titles" class="text-center">
+                    <span t-out="doc.action_get_published_name()"/>
+                </h1>
+                <div>
+                    <t t-out="doc.description"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_article">
+        <t t-set="printed_titles" t-value="not docs.env['knowsystem.article'].should_title_be_printed()"/>
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="knowsystem.report_article_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

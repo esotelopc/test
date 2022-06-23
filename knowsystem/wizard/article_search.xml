@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+    <record id="article_search_form_view" model="ir.ui.view">
+        <field name="name">article.search.form.view</field>
+        <field name="model">article.search</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="tag_ids"
+                           widget="many2many_tags"
+                           options="{'no_quick_create': 1, 'no_create_edit': 1, 'color_field': 'color'}"
+                    />
+                    <field name="section_ids"
+                           widget="many2many_tags"
+                           options="{'no_quick_create': 1, 'no_create_edit': 1}"
+                    />
+                    <field name="search"/>
+                    <field name="no_selection" invisible="1"/>
+                </group>
+                <notebook>
+                    <page string="Articles">
+                        <field name="article_ids"
+                               mode="kanban"
+                               widget="many2many_knowsystem_kanban"
+                               readonly="1"
+                               context="{'form_view_ref': 'knowsystem.knowsystem_article_view_quick_search'}"
+                        >
+                            <kanban>
+                                <field name="id"/>
+                                <field name="name"/>
+                                <field name="kanban_description"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_global_click">
+                                            <div class="oe_kanban_content">
+                                                <div class="o_kanban_record_title">
+                                                    <a attrs="{'invisible': [('parent.no_selection', '=', True)]}"
+                                                       class="fa fa-lg fa-plus-circle pull-right article_select"
+                                                       t-att-id="record.id.raw_value"
+                                                       href="#"> </a>
+                                                    <strong>
+                                                        <field name="name"/>
+                                                    </strong>
+                                                </div>
+                                                <div class="knowsystem-break-word">
+                                                    <i><field name="kanban_description"/>... </i>
+                                                </div>
+                                            </div>
+                                            <div class="oe_clear"/>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+                    <page string="Chosen articles" attrs="{'invisible': [('no_selection', '=', True)]}">
+                        <field name="selected_article_ids"
+                               mode="kanban"
+                               widget="many2many_knowsystem_kanban"
+                               readonly="1"
+                        >
+                            <kanban>
+                                <field name="id"/>
+                                <field name="name"/>
+                                <field name="kanban_description"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div t-attf-class="oe_kanban_global_click" t-att-id="id">
+                                            <div class="oe_kanban_content">
+                                                <div class="o_kanban_record_title">
+                                                    <a class="fa fa-lg fa-times pull-right" type="delete"> </a>
+                                                    <strong>
+                                                        <field name="name"/>
+                                                    </strong>
+                                                </div>
+                                                <div class="knowsystem-break-word">
+                                                    <i><field name="kanban_description"/>... </i>
+                                                </div>
+                                            </div>
+                                            <div class="oe_clear"/>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button name="cancel"
+                            string="Close"
+                            special="cancel"
+                            class="oe_link"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="article_search_form_view_nofooter" model="ir.ui.view">
+        <field name="name">article.search.form.view.no.footer</field>
+        <field name="model">article.search</field>
+        <field name="inherit_id" ref="knowsystem.article_search_form_view"/>
+        <field name="mode">primary</field>
+        <field name="priority" eval="10"/>
+        <field name="arch" type="xml">
+            <xpath expr="//footer" position="replace"/>
+        </field>
+    </record>
+
+</odoo>

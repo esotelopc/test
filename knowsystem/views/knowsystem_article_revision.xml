@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="knowsystem_article_revision_view_form_viewer" model="ir.ui.view">
+        <field name="name">knowsystem.article.revision.form.viewer</field>
+        <field name="model">knowsystem.article.revision</field>
+        <field name="arch" type="xml">
+            <form create="0" delete="0" edit="0">
+                <header>
+                    <button name="action_recover_this_revision"
+                            type="object"
+                            class="btn btn-primary"
+                            string="Restore this revision"
+                            confirm="Please confirm that you want to consider this revision as the main article version"
+                    />
+                </header>
+                <div class="knowsystem_article_revision_form_header knowsystem_fullwidth">
+                    <h1 style="padding: 0; margin: 0;">
+                        <field name="name"/>
+                    </h1>
+                </div>
+                <group>
+                    <field name="article_id"/>
+                    <group>
+                        <field name="tag_ids"
+                               widget="many2many_tags"
+                               options="{'color_field': 'color'}"
+                               colspan="6"
+                        />
+                        <field name="section_id"
+                               options="{'no_create_edit':'1', 'no_quick_create': '1'}"
+                               colspan="6"
+                        />
+                        <field name="change_datetime" colspan="6"/>
+                    </group>
+                    <group>
+                        <div class="pull-right">
+                            <field name="attachment_ids"
+                                   widget="many2many_binary"
+                                   string="Attachments"
+                                   col="6"
+                            />
+                        </div>
+                    </group>
+                </group>
+                <div class="knowsystem_article_revision_form_content knowsystem_fullwidth">
+                    <field name="description_arch" 
+                           widget="html"
+                           options="{'cssReadonly': 'knowsystem.knowsystem_iframe_css_assets_edit', 'notEditable': True}"
+                    />
+                    <field name="description" invisible="1"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="knowsystem_article_revision_action" model="ir.actions.act_window">
+        <field name="name">Revision</field>
+        <field name="res_model">knowsystem.article.revision</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="knowsystem_article_revision_view_search" model="ir.ui.view">
+        <field name="name">knowsystem.article.revision.search</field>
+        <field name="model">knowsystem.article.revision</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <group expand="0" string="Group By">
+                    <filter string="Article" name="by_articles" context="{'group_by':'article_id'}"/>
+                    <filter string="Revision Date" name="by_dates" context="{'group_by':'change_datetime'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="knowsystem_article_revision_view_tree" model="ir.ui.view">
+        <field name="name">knowsystem.article.revision.tree</field>
+        <field name="model">knowsystem.article.revision</field>
+        <field name="arch" type="xml">
+            <tree delete="1" create="0" edit="0">
+                <field name="name"/>
+                <field name="article_id"/>
+                <field name="change_datetime"/>
+            </tree>
+        </field>
+    </record>
+    <record id="knowsystem_article_revision_action" model="ir.actions.act_window">
+        <field name="name">Revisions</field>
+        <field name="res_model">knowsystem.article.revision</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" eval="knowsystem_article_revision_view_search"/>
+        <field name="context">{'search_default_by_articles': 1}</field>
+    </record>
+
+</odoo>

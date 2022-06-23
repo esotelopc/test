@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <menuitem name="KnowSystem"
+              id="menu_knowsystem_main"
+              sequence="40"
+              groups="base.group_user"
+              web_icon="knowsystem,static/description/icon.png"
+    />
+    <menuitem name="Knowledge Base"
+              id="menu_knowsystem_articles"
+              parent="menu_knowsystem_main"
+              action="knowsystem.knowsystem_article_action"
+              sequence="10"
+              groups="base.group_user"
+    />
+    <menuitem name="Configuration"
+              id="menu_knowsystem_conf"
+              parent="menu_knowsystem_main"
+              sequence="300"
+              groups="knowsystem.group_knowsystem_editor"
+    />
+    <menuitem name="Sections"
+              id="menu_knowsystem_sections"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.knowsystem_section_action"
+              sequence="10"
+              groups="knowsystem.group_knowsystem_editor"
+    />
+    <menuitem name="Tags"
+              id="menu_knowsystem_tags"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.knowsystem_tag_action"
+              sequence="20"
+              groups="knowsystem.group_knowsystem_editor"
+    />
+    <menuitem name="Templates"
+              id="menu_knowsystem_templates"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.knowsystem_article_template_action"
+              sequence="30"
+              groups="knowsystem.group_knowsystem_editor"
+    />
+    <menuitem name="Tours"
+              id="menu_knowsystem_tours"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.knowsystem_tour_action"
+              sequence="40"
+              groups="knowsystem.group_knowsystem_admin"
+    />
+    <menuitem name="Attachments"
+              id="menu_knowsystem_attachments"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.action_ir_attachment_knowsystem"
+              sequence="49"
+              groups="knowsystem.group_knowsystem_admin"
+    />
+    <menuitem name="Revisions"
+              id="menu_knowsystem_revisions"
+              parent="menu_knowsystem_conf"
+              action="knowsystem.knowsystem_article_revision_action"
+              sequence="49"
+              groups="knowsystem.group_knowsystem_admin"
+    />
+    <menuitem name="Configuration"
+              id="menu_res_config_settings"
+              parent="menu_knowsystem_conf"
+              sequence="50"
+              action="res_config_settings_knowsystem_action"
+              groups="knowsystem.group_knowsystem_admin"
+    />
+
+</odoo>

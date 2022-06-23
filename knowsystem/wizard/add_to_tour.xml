@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<odoo>
+
+     <record id="add_to_tour_form_view" model="ir.ui.view">
+        <field name="name">add.to.tour.form.view</field>
+        <field name="model">add.to.tour</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="articles" invisible="1"/>
+                    <field name="tour_id"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+</odoo>

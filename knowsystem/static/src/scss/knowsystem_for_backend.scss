@@ -1,0 +1,74 @@
+$o-ks-def-color-2: #ffffff;
+$o-ks-code-font: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$o-ks-def-color-4: #464646;
+
+/* Show knowsystem snippets correctly in threads, in reports, and on website */
+.knowsystem_snippet_general {
+    table.card {
+        display: inline-table;
+        .card-header,.card-footer {
+            background-color: inherit !important;
+        }
+        .card-body {
+            background-color: white !important;
+        }
+    }  
+    tr, td {
+        page-break-inside: avoid;
+    }
+
+    .knowsystem_code {
+        font-family: $o-ks-code-font;
+        color: $o-ks-def-color-2;
+        padding-left: 16px;
+    }
+    .knowsystem_alert {
+        border-width: 1px;
+        border-style: solid;
+        border-radius: .25rem;
+        p, ul, ol {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        &_sm {
+            padding: 10px;
+            font-size: 14px;
+        }
+        &_md {
+            padding: 15px;
+            font-size: 16px;
+        }
+        &_lg {
+            padding: 30px;
+            font-size: 18px;
+        }
+        &_icon {
+            float: left;
+            margin-right: 10px;
+            padding-top: 8px;
+        }
+        &_content {
+            overflow: hidden;
+        }
+    }
+    .knowsystem_hr {
+        line-height: 0;
+        hr {
+            padding: 0;
+            border: 0;
+            border-top: 1px solid $o-ks-def-color-4;
+            margin: 0;
+            color: inherit;
+        }
+    }
+    .knowsystem_text_highlight {
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+    .knowsystem_media_col {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+}

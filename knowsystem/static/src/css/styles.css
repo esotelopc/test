@@ -1,0 +1,207 @@
+/* Overload standard jstree styles */
+div.knowsystem_panel_body > .jstree-default .jstree-hovered {
+    background: transparent;
+    border-radius: 0px;
+    box-shadow: inset 0 0 1px #cccccc;
+}
+div.knowsystem_panel_body > .jstree-default .jstree-context {
+    background: transparent;
+    border-radius: 0px;
+    box-shadow: inset 0 0 1px #cccccc;
+}
+div.knowsystem_panel_body > .jstree-default .jstree-clicked {
+    background: transparent;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+/* Basic*/
+.knowsystem_hidden {display: none !important;}
+@media screen and (max-width: 540px) {
+    .hidden_mobile {display: none !important;}
+}
+@media screen and (min-width: 540px) and (max-width: 860px) {
+    .hidden_tablet {display: none !important;}
+}
+@media screen and (max-width: 1050px) {
+    .hidden_under1000 {display: none !important;}
+}
+.know_functional_button {cursor: pointer;}
+.know_functional_button:hover {color: white;}
+.knowsystem_fullwidth {width: 100% !important;}
+.knowsystem_halfwidth {width: 50% !important;}
+.know_navigation_panel {
+    background-color: #212529;
+    display: block;
+    color: #dee2e6;
+    overflow: auto;
+}
+.knowsystem_panel_header {
+    color: #dee2e6;
+    width: 100%;
+    padding: 3% 0% 1% 8%;
+    font-size: 13pt;
+}
+.knowsystem_content {
+    display: block;
+    width: 100%;
+}
+.knowsystem_panel_body {
+    width: 100%;
+    padding-left: 1%;
+}
+.knowsystem_hr {
+    background-color: #dee2e6;
+    width: 100%;
+}
+.knowclear {
+    font-size: 9pt;
+    padding-left: 3px;
+}
+.know_padding_top {padding-top: 3%;}
+div.knowsystem_search_row {
+    display: flex;
+    align-items: flex-end;
+    padding: 0% 4% 0% 7%;
+}
+div.knowsystem_search_view {
+    align-items: flex-end;
+    flex: 1 1 100%;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 0 40px 1px 0;
+    position: relative;
+    display: block;
+    margin: 0 0px 8px 8px;
+}
+.knowsystem_search_icon {
+    flex: 1 1 100%;
+    position: absolute;
+    top: 6px;
+    left: auto;
+    bottom: auto;
+    right: 22px;
+    color: #212529;
+}
+.knowsystem_trash_icon {
+    flex: 1 1 100%;
+    position: absolute;
+    top: 6px;
+    left: auto;
+    bottom: auto;
+    right: 5px;
+    color: #212529;    
+}
+.knowsystem_js_search_icon:hover {
+    cursor: pointer;
+    color: black;
+}
+div.knowsystem_search_container {
+    flex: 1 1 100%;
+    flex-flow: row wrap;
+    position: relative;
+    display: flex;
+}
+input.knowsystem_search_input {
+    flex: 1 0 auto;
+    width: 75px;
+    border: none;
+    padding: 4px 0 0 0;
+}
+
+/* Kanban view*/
+.knowsystem_articles {}
+.knowsystem_kanban_view {
+    overflow: auto !important;
+    flex: 1 1;
+    position: relative !important;
+}
+.knowsystem_navigation_panel {flex: 0 0 320px;}
+.knowsystem_right_navigation_panel {flex: 0 0 320px;}
+.overall_articles_selection {
+    max-height: 400px;
+    overflow: auto !important;
+}
+.knowsystem_panel_body_articles {
+    width: 100%;
+    padding: 3% 2% 1% 8%;
+}
+.knowselection_div {
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 3pt;
+}
+.knowselection_options {
+    color: #dee2e6;
+    min-width: 150px;
+    max-width: 150px;
+    padding-left: 2%;
+    font-size: 11pt;
+    background-color: #2E2E2E;
+    border: none;
+}
+.knowselection_options option {color: #dee2e6;}
+ul.no_padding_knowul {padding-inline-start: 15px;}
+.add_knownode_button {
+    margin-right: 5%;
+    font-size: 9pt;
+    color: #dee2e6;
+    cursor: pointer;
+}
+.add_knownode_button:hover {color: white;}
+.knowsystem_kanban_record {box-shadow: none !important;}
+.knowsystem_kanban_record_bottom {padding-top: 5px;}
+.knowkanabanselected {
+    border: 2px solid #00A09D !important;
+    box-shadow: 2px 2px 2px 2px #6c757d !important;
+}
+.article_select:hover {font-weight: bold;}
+.knowsystem_kanban_record.o_dropdown_open .o_kanban_card_manage_pane {display: block;}
+.knowsystem_kanban_record.o_dropdown_open .o_kanban_manage_toggle_button {position: absolute;}
+.knowsystem_kanban_record.o_dropdown_open .o_kanban_manage_toggle_button {display: none;}
+
+.likedarticlepad {padding: 0 3px;}
+.know_tours {list-style: none;}
+.tour_li {padding-bottom: 2%;}
+/* Form view */
+.knowsystem_article_form_header {}
+.know_left_control {flex: 0 0 80% !important;}
+.know_right_control {flex: 0 0 20% !important;}
+.knowsystem_chatter {min-width: 100% !important;}
+.know_system_revisions {
+    min-height: 200px;
+    font-size: 13pt;
+    width: 100%;
+}
+.knowmodal_div {
+    width: 100% !important;
+    overflow: auto;
+}
+.red_revision {color: red;}
+.green_revision {color: green;}
+.done_article_like {color: #7C7BAD;}
+.form_knowsystem_article_like {}
+.form_knowsystem_article_dislike {}
+.highlight_button {border: 1px solid #dee2e6;}
+.knowsystem_dropdown {display: inline-block;}
+.knowsystem_misc_actions {
+    position: absolute;
+    z-index: 9999;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 6px 12px -4px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    display: block;
+}
+.knowsystem_misc_action_ul {
+    list-style: none;
+    padding: 0;
+}
+.short_description_know {
+    max-height: 100px;
+    overflow: auto;
+}
+.knowsystem-break-word {
+    overflow-wrap: break-word;
+    white-space: normal;    
+}

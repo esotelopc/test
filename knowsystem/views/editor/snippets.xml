@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   
+    <!-- Snippets & Themes Menu -->
+    <template id="knowsystem_snippets"
+              inherit_id="web_editor.snippets"
+              primary="True"
+              groups="base.group_user"
+    >
+        
+        <xpath expr="//div[hasclass('o_we_website_top_actions')]" position="attributes">
+             <attribute name="class" add="knowsystem-justify-right" remove="" separator=" "/>
+        </xpath>
+        <xpath expr="//button[hasclass('fa-undo')]" position="inside">
+             <i class="fa fa-undo"></i>
+        </xpath>
+        <xpath expr="//button[hasclass('fa-undo')]" position="attributes">
+            <attribute name="class" add="btn-primary mr4" remove="btn-secondary fa fa-undo" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_we_website_top_actions')]" position="inside">
+            <div class="knowsystem_top_actions">
+                <button class="o_codeview_btn btn btn-primary">
+                    <i class="fa fa-code"></i>
+                </button>
+                <button class="o_fullscreen_btn btn btn-primary">
+                    <img src="/web_editor/font_to_img/61541/rgb(255,255,255)/16" alt="Fullscreen"/>
+                </button>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='o_scroll']" position="replace">
+            <div id="o_scroll">
+                <div id="snippet_structure" class="o_panel">
+                    <div class="o_panel_header">
+                        <i class="fa fa-paragraph"/> Texts
+                    </div>
+                    <div class="o_panel_body">
+                        <t t-snippet="knowsystem.knowsystem_block_title_text" t-thumbnail="/knowsystem/static/src/img/blocks/title_text.png"/>
+                        <t t-snippet="knowsystem.knowsystem_block_text" t-thumbnail="/knowsystem/static/src/img/blocks/paragraph.png"/>
+                        <t t-snippet="knowsystem.knowsystem_block_tilte_subtitle" t-thumbnail="/knowsystem/static/src/img/blocks/title_subtitle.png"/>
+                        
+                        <t t-snippet="knowsystem.knowsystem_comparison" t-thumbnail="/knowsystem/static/src/img/blocks/comparison.png"/>
+                        <t t-snippet="knowsystem.knowsystem_3_columns_text" t-thumbnail="/knowsystem/static/src/img/blocks/3_columns_text.png"/>
+                        <t t-snippet="knowsystem.knowsystem_color_boxes" t-thumbnail="/knowsystem/static/src/img/blocks/color_boxes.png"/>
+                    </div>
+                    <div class="o_panel_header">
+                        <i class="fa fa-plus"/> Special
+                    </div>
+                    <div class="o_panel_body">
+                        <t t-snippet="knowsystem.knowsystem_card" t-thumbnail="/knowsystem/static/src/img/blocks/card.png"/>
+                        <t t-snippet="knowsystem.knowsystem_alert" t-thumbnail="/knowsystem/static/src/img/blocks/alert.png"/>
+                        <t t-snippet="knowsystem.knowsystem_code" t-thumbnail="/knowsystem/static/src/img/blocks/code.png"/>
+
+                        <t t-snippet="knowsystem.knowsystem_text_highlight" t-thumbnail="/knowsystem/static/src/img/blocks/tag_line.png"/>
+                        <t t-snippet="knowsystem.knowsystem_recommendations" t-thumbnail="/knowsystem/static/src/img/blocks/recommend.png"/>
+                        <t t-snippet="knowsystem.knowsystem_hr" t-thumbnail="/knowsystem/static/src/img/blocks/separator.png"/>
+                    </div>
+                    <div class="o_panel_header">
+                        <i class="fa fa-photo"/> Images
+                    </div>
+                    <div class="o_panel_body">
+                        <t t-snippet="knowsystem.knowsystem_image_text" t-thumbnail="/knowsystem/static/src/img/blocks/image_text.png"/>
+                        <t t-snippet="knowsystem.knowsystem_text_image" t-thumbnail="/knowsystem/static/src/img/blocks/text_image.png"/>
+                        <t t-snippet="knowsystem.knowsystem_image" t-thumbnail="/knowsystem/static/src/img/blocks/image.png"/>
+                        <t t-snippet="knowsystem.knowsystem_image_banner" t-thumbnail="/knowsystem/static/src/img/blocks/banner.png"/>
+                        <t t-snippet="knowsystem.knowsystem_3_columns_text_images" t-thumbnail="/knowsystem/static/src/img/blocks/3_columns.png"/>
+                        <t t-snippet="knowsystem.knowsystem_image_list" t-thumbnail="/knowsystem/static/src/img/blocks/image_list.png"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='snippet_options']/t" position="attributes">
+            <attribute name="t-call">knowsystem.snippet_options</attribute>
+        </xpath>
+    </template>
+
+    <!-- Texts: simple texts/headers -->
+    <template id="knowsystem_block_title_text" name="Title + Text">
+        <div class="pt8 pb8 knowsystem_block_title_text knowsystem_snippet_general" data-snippet="knowsystem_block_title_text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 o_cc bg-white">
+                        <h2 class="mb8">Title</h2>
+                        <p class="o_default_snippet_text"> Point 1.</p>
+                        <p class="o_default_snippet_text"> Point 2.</p>
+                        <p class="o_default_snippet_text"> Point 3.</p>
+                        <p class="o_default_snippet_text"> Point 4.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="knowsystem_block_text" name="Text">
+        <div class="pt8 pb8 knowsystem_block_text knowsystem_snippet_general" data-snippet="knowsystem_block_title_text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 o_cc bg-white">
+                        <p class="o_default_snippet_text"> Point 1.</p>
+                        <p class="o_default_snippet_text"> Point 2.</p>
+                        <p class="o_default_snippet_text"> Point 3.</p>
+                        <p class="o_default_snippet_text"> Point 4.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template id="knowsystem_block_tilte_subtitle" name="Title + Subtitle">
+        <div class="pt8 pb8 knowsystem_block_tilte_subtitle knowsystem_snippet_general" data-snippet="knowsystem_block_tilte_subtitle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 o_cc bg-white">
+                        <h2 class="mb8">Title</h2>
+                        <h3 class="mb8">Subtitle</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Texts: comparisons -->
+    <template id="knowsystem_comparison" name="Comparisons">
+        <div class="pt8 pb8 knowsystem_comparison knowsystem_snippet_general" data-snippet="knowsystem_comparison">
+            <div class="container">
+                <div class="row">
+                    <div class="s_col_no_bgcolor text-center pt8 pb8 col-lg-4">
+                        <div class="card o_cc4 bg-o-color-1">
+                            <div class="card-header">
+                                <span class="o_default_snippet_text" style="font-size:18px; font-weight: 500;">
+                                    Option 1
+                                </span>
+                            </div>
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-center o_default_snippet_text">
+                                    Key point
+                                </h2>
+                                <small class="o_default_snippet_text">comment</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item o_default_snippet_text">point 1</li>
+                                <li class="list-group-item o_default_snippet_text">point 2</li>
+                                <li class="list-group-item o_default_snippet_text">point 3</li>
+                                <li class="list-group-item o_default_snippet_text">point 4</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="o_default_snippet_text">Footer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s_col_no_bgcolor text-center pt8 pb8 col-lg-4">
+                        <div class="card o_cc4 bg-o-color-1">
+                            <div class="card-header">
+                                <span class="o_default_snippet_text" style="font-size:18px; font-weight: 500;">
+                                    Option 2
+                                </span>
+                            </div>
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-center o_default_snippet_text">
+                                    Key point
+                                </h2>
+                                <small class="o_default_snippet_text">comment</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item o_default_snippet_text">point 1</li>
+                                <li class="list-group-item o_default_snippet_text">point 2</li>
+                                <li class="list-group-item o_default_snippet_text">point 3</li>
+                                <li class="list-group-item o_default_snippet_text">point 4</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="o_default_snippet_text">Footer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s_col_no_bgcolor text-center pt8 pb8 col-lg-4">
+                        <div class="card o_cc4 bg-o-color-1">
+                            <div class="card-header">
+                                <span class="o_default_snippet_text" style="font-size:18px; font-weight: 500;">
+                                    Option 3
+                                </span>
+                            </div>
+                            <div class="card-body text-center">
+                                <h2 class="card-title text-center o_default_snippet_text">
+                                    Key point
+                                </h2>
+                                <small class="o_default_snippet_text">comment</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item o_default_snippet_text">point 1</li>
+                                <li class="list-group-item o_default_snippet_text">point 2</li>
+                                <li class="list-group-item o_default_snippet_text">point 3</li>
+                                <li class="list-group-item o_default_snippet_text">point 4</li>
+                            </ul>
+                            <div class="card-footer">
+                                <span class="o_default_snippet_text">Footer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+     <!-- Texts: simple columns -->
+    <template id="knowsystem_3_columns_text" name="Columns">
+        <div class="o_cc pt8 pb8 knowsystem_3_columns_text knowsystem_snippet_general" data-snippet="knowsystem_3_columns_text">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8">
+                        <div class="card bg-white h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Column 1</h3>
+                                <p class="card-text">Text 1</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8">
+                        <div class="card bg-white h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Column 2</h3>
+                                <p class="card-text">Text 2</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8">
+                        <div class="card bg-white h-100">
+                            <div class="card-body">
+                                <h3 class="card-title">Column 3</h3>
+                                <p class="card-text">Text 3</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+     <!-- Texts: color boxes columns -->
+    <template id="knowsystem_color_boxes" name="Color Boxes">
+        <div class="knowsystem_color_boxes knowsystem_snippet_general pt8 pb8" data-snippet="knowsystem_color_boxes">
+            <div class="container">
+                <div class="row">
+                    <div class="row_col col-lg-6 o_cc o_cc4 text-center pt32 pb32">
+                        <div class="mb16 pb16">
+                            <i class="fa fa-info fa-5x"/>
+                        </div>
+                        <h2>A color block 1</h2>
+                        <p>Text</p>
+                        <small>comment</small>
+                    </div>
+                    <div class="row_col col-lg-6 o_cc o_cc3 text-center pt32 pb32">
+                        <div class="mb16 pb16">
+                            <i class="fa fa-info fa-5x"/>
+                        </div>
+                        <h2>A color block 2</h2>
+                        <p>Text</p>
+                        <small>comment</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: card -->
+    <template id="knowsystem_card" name="Card">
+        <div class="knowsystem_card knowsystem_snippet_general pt8 pb8" data-snippet="knowsystem_card">
+            <div class="container">
+                <div class="row">
+                    <div class="s_col_no_bgcolor pt32 pb16 col-lg-12">
+                        <div class="card o_cc4 bg-o-color-1">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Title
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Text</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="o_default_snippet_text">comment</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: alert -->
+    <template id="knowsystem_alert" name="Alert">
+        <div class="knowsystem_snippet_general pt8 pb8 px-3 knowsystem_no_cols" data-snippet="knowsystem_alert">
+            <div class="container knowsystem_no_options">
+                <div class="pt8 pb8 w-100 o_cc knowsystem_alert knowsystem_alert_md alert-info clearfix">
+                    <div class="knowsystem_alert_icon" valign="top">
+                        <i class="fa fa-2x fa-info-circle w-100 h-100"/>
+                    </div>
+                    <div class="knowsystem_alert_content mt8">
+                        <p><b>Alert</b>
+                        <br/>Alert message.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: code snippet -->
+    <template id="knowsystem_code" name="Code">
+        <div class="knowsystem_snippet_general o_height_400 o_cc o_cc5 pt8 pb8 knowsystem_no_cols" data-snippet="knowsystem_code">
+            <div class="container knowsystem_no_options">
+                <div class="knowsystem_code pt8 pb8 knowsystem_no_options" valign="top">
+                    Code line 1<br/>
+                    Code line 2
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: tagline (text highlight ) -->
+    <template id="knowsystem_text_highlight" name="Tagline">
+        <div class="o_cc pt8 pb8 knowsystem_snippet_general" data-snippet="knowsystem_text_highlight">
+            <div class="container knowsystem_no_options">
+                <div class="knowsystem_text_highlight o_cc o_cc4 w-100 text-center pt16 pb16">
+                    <h3>Title</h3>
+                    <p class="knowsystem_no_margin">Text!</p>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: references -->
+    <template id="knowsystem_recommendations" name="References">
+        <div class="pt8 pb8 knowsystem_recommendations knowsystem_snippet_general" data-snippet="knowsystem_recommendations">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 o_cc bg-white">
+                        <h3 class="knowsystem_no_margin mb8">References</h3>
+                        <p class="o_default_snippet_text"> <a role="button" href="#" class="">reference 1</a></p>
+                        <p class="o_default_snippet_text"> <a role="button" href="#" class="">reference 2</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Special: separator -->
+    <template id="knowsystem_hr" name="Separator">
+        <div class="knowsystem_hr knowsystem_snippet_general pt16 pb16" data-snippet="knowsystem_hr">
+            <span/>
+            <hr class="s_hr_1px s_hr_solid w-100 mx-auto"/>
+        </div>
+    </template>
+
+    <!-- Images: image & text -->
+    <template id="knowsystem_image_text" name="Image + Text">
+        <div class="knowsystem_image_text o_cc pt8 pb8 knowsystem_snippet_general knowsystem_no_cols" data-snippet="knowsystem_image_text">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 px-0 knowsystem_no_options">
+                        <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16 o_cc bg-white">
+                        <h3>Title</h3>
+                        <p class="text-justify">Details</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Images: text & image -->
+    <template id="knowsystem_text_image" name="Text + Image">
+        <div class="knowsystem_text_image o_cc pt8 pb8 knowsystem_snippet_general knowsystem_no_cols" data-snippet="knowsystem_text_image">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pt16 pb16 o_cc bg-white">
+                        <h3>Title</h3>
+                        <p class="text-justify">Details</p>
+                    </div>
+                    <div class="col-lg-6 px-0 knowsystem_no_options">
+                        <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Images: big image -->
+    <template id="knowsystem_image" name="Image">
+        <div class="knowsystem_image o_cc pt8 pb8 knowsystem_snippet_general knowsystem_no_cols" data-snippet="knowsystem_image">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 px-0 knowsystem_no_options">
+                        <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                        <p class="text-center py-3 bg-white">comments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Images: cover (banner) -->
+    <template id="knowsystem_image_banner" name="Banner">
+        <div class="knowsystem_image knowsystem_snippet_general knowsystem_no_options" data-snippet="knowsystem_image">
+            <div class="container">
+                <img src="/knowsystem/static/src/img/blocks/no_image.png" alt="Cover image" class="img-fluid w-100"/>
+            </div>
+        </div>
+    </template>
+    <!-- Images: columns -->
+    <template id="knowsystem_3_columns_text_images" name="Columns">
+        <div class="knowsystem_3_columns_text_images knowsystem_snippet_general o_cc pt8 pb8" data-snippet="knowsystem_3_columns_text_images">
+            <div class="container ">
+                <div class="row align-items-stretch">
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8 knowsystem_no_options">
+                        <div class="h-100">
+                            <img class="img w-100" src="/knowsystem/static/src/img/blocks/no_image.png" alt=""/>
+                            <div class="bg-white">
+                                <h3 class="card-title">Column 1</h3>
+                                <p class="card-text">Text 1</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8 knowsystem_no_options">
+                        <div class="h-100">
+                            <img class="img w-100" src="/knowsystem/static/src/img/blocks/no_image.png" alt=""/>
+                            <div class="bg-white">
+                                <h3 class="card-title">Column 1</h3>
+                                <p class="card-text">Text 1</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt8 pb8 knowsystem_no_options">
+                        <div class="h-100">
+                            <img class="img w-100" src="/knowsystem/static/src/img/blocks/no_image.png" alt=""/>
+                            <div class="bg-white">
+                                <h3 class="card-title">Column 1</h3>
+                                <p class="card-text">Text 1</p>
+                                <p><strong>To highlight</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- Images: list -->
+    <template id="knowsystem_image_list" name="Images List">
+        <div class="knowsystem_image_list pt8 pb8 o_cc knowsystem_snippet_general" data-snippet="knowsystem_image_list">
+            <div class="container">
+                <div class="row s_nb_column_fixed s_col_no_bgcolor">
+                    <div class="col-lg-12 s_media_list_item pt8 pb8 knowsystem_no_options">
+                        <div class="row s_col_no_resize s_col_no_bgcolor no-gutters o_cc bg-white">
+                            <div class="col-lg-4 knowsystem_no_options">
+                                <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                            </div>
+                            <div class="col-lg-8 pt8 pb8 knowsystem_media_col knowsystem_no_options bg-white">
+                                <h3>Title</h3>
+                                <p>Comments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 s_media_list_item pt8 pb8 knowsystem_no_options">
+                        <div class="row s_col_no_resize s_col_no_bgcolor no-gutters o_cc bg-white">
+                            <div class="col-lg-4 knowsystem_no_options">
+                                <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                            </div>
+                            <div class="col-lg-8 o_cc pt8 pb8 knowsystem_media_col knowsystem_no_options bg-white">
+                                <h3>Title</h3>
+                                <p>Comments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 s_media_list_item pt8 pb8 knowsystem_no_options">
+                        <div class="row s_col_no_resize s_col_no_bgcolor no-gutters o_cc bg-white">
+                            <div class="col-lg-4 knowsystem_no_options">
+                                <img src="/knowsystem/static/src/img/blocks/no_image.png" class="img w-100" alt=""/>
+                            </div>
+                            <div class="col-lg-8 o_cc pt8 pb8 knowsystem_media_col knowsystem_no_options bg-white">
+                                <h3>Title</h3>
+                                <p>Comments</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</odoo>
